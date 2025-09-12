@@ -2,19 +2,19 @@
 
 // ==== Инъекция CSS ====
 const styles = `
-:root {
+:root {                                // Переменные, можно менять, чтобы изменить цветовую схему, например на "темную"
     --accent: orangered;
 }
 
-*,
-::before,
-::after {
+*,            // Селекторы для всех элементов, а также для псевдоэлементов,   чтобы избежать проблем с отступами и размерами
+::before,   // Сброс отступов и полей для всех элементов, а также установка box-sizing в border-box
+::after {  // чтобы padding и border учитывались в ширине и высоте элементов,   
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body {
+body {    // Стили для body, чтобы центрировать содержимое и задать фон
     height: 100vh;
     margin: 0;
     display: flex;
@@ -25,7 +25,7 @@ body {
     text-wrap: pretty;
 }
 
-.card {
+.card {    // Стили для карточки с часами, включая фон, отступы, рамки и позиционирование
     --light: rgba(255, 255, 255, calc(1 - var(--distance, 0)));
     --border-radius: .4rem;
     background: #f1f1f1;
@@ -37,7 +37,7 @@ body {
     position: relative;
 }
 
-.card::before {
+.card::before {  // Псевдоэлемент для создания динамической рамки с градиентом, использующий переменные для угла и расстояния
     content: "";
     position: absolute;
     inset: -.4rem; /* Новый размер рамки */
@@ -52,7 +52,7 @@ body {
     z-index: -1;
 }
 
-.card::after {
+.card::after {   // Псевдоэлемент для создания динамической тени, использующий переменные для угла и расстояния,  чтобы тень смещалась в зависимости от положения мыши
     content: "";
     position: absolute;
     inset: -.4rem; /* Новый размер тени */
@@ -67,7 +67,7 @@ body {
     border-radius: var(--border-radius);
 }
 
-#clock h1 {
+#clock h1 {    // Стили для заголовка с часами, включая размер шрифта, цвет, тень и семейство шрифтов, а также межстрочный интервал и балансировку текста
     font-size: 7rem;
     color: #091c7e;
     text-shadow: 0 0 10px #34d3e0;
@@ -76,7 +76,7 @@ body {
     text-wrap: balance;
 }
 
-@keyframes pulse {
+@keyframes pulse {   // Анимация пульсации для секунд, изменяющая прозрачность, чтобы создать эффект пульсации, используется в последние 10 секунд каждой минуты
     0% {
         opacity: 1;
     }
@@ -88,30 +88,30 @@ body {
     }
 }
 
-#clock .seconds {
+#clock .seconds {   // Стили для секунд, включая размер шрифта, цвет и тень, а также отключение анимации по умолчанию, чтобы анимация применялась только в последние 10 секунд
     animation: none;
     color: #091c7e;
     text-shadow: 0 0 10px #34d3e0;
 }
 
-#clock .pulse-animation {
+#clock .pulse-animation {  // Стили для секунд с анимацией пульсации, включая анимацию, цвет и тень, чтобы выделить последние 10 секунд каждой минуты
     animation: pulse 1s infinite;
     color: #ab3434;
     text-shadow: 0 0 15px #c31b1b;
 }
 
-::selection {
+::selection {  // Стили для выделенного текста, включая цвет фона и текста, чтобы улучшить видимость выделенного текста, используя акцентный цвет
     background: var(--accent);
     color: white;
 }
 `;
 
-const styleTag = document.createElement("style");
+const styleTag = document.createElement("style");  // Создаем тег <style> и добавляем в него CSS стили
 styleTag.textContent = styles;
 document.head.appendChild(styleTag);
 
 // ===== Логика часов =====
-function showTime() {
+function showTime() {   // Функция для отображения текущего времени, обновляется каждую секунду, включает логику для анимации и звука в последние 10 секунд каждой минуты
     const date = new Date();
     const h = String(date.getHours()).padStart(2, "0");
     const m = String(date.getMinutes()).padStart(2, "0");
@@ -121,11 +121,15 @@ function showTime() {
     const isLastTenSeconds = s >= 50;
 
     // Применяем класс для анимации и цвета
-    const secondsClass = isLastTenSeconds ? "seconds pulse-animation" : "seconds";
+    const secondsClass = isLastTenSeconds ? "seconds pulse-animation" : "seconds";  // Класс для секунд, добавляем анимацию в последние 10 секунд
 
-    const timeHTML = `${h}:${m}:<span class="${secondsClass}">${s}</span>`;
+    // Формируем HTML для отображения времени с подсветкой секунд
 
-    const root = document.getElementById("clock");
+    const timeHTML = `${h}:${m}:<span class="${secondsClass}">${s}</span>`; // HTML с подсветкой секунд, добавляем span с классом для секунд, чтобы применить стили и анимацию
+
+    // Вставляем время в DOM
+
+    const root = document.getElementById("clock");  // Корневой элемент для часов, создаем его, если не существует, чтобы избежать ошибок
     let h1 = root.querySelector("h1");
     if (!h1) {
         h1 = document.createElement("h1");
@@ -141,22 +145,22 @@ function showTime() {
 }
 
 // ===== Звук "тик" =====
-let tickSound = new Audio(
+let tickSound = new Audio(   // Звук "тик", загружаем аудио файл, можно заменить на любой другой короткий звук, например, "тик" часов
     "https://actions.google.com/sounds/v1/alarms/beep_short.ogg"
 );
 tickSound.volume = 0.3;
 
-function playTick() {
+function playTick() {  // Функция для воспроизведения звука "тик", клонируем аудио элемент, чтобы можно было воспроизводить звук несколько раз подряд
     const sound = tickSound.cloneNode();
     sound.play().catch(() => {});
 }
 
 // ===== Логика подсветки =====
-function quickDist(deltaX, deltaY) {
-    return deltaX ** 2 + deltaY ** 2;
+function quickDist(deltaX, deltaY) {   // Быстрое вычисление квадрата расстояния от центра, чтобы избежать использования Math.sqrt для производительности, возвращает квадрат расстояния
+    return deltaX ** 2 + deltaY ** 2;  // Возвращаем квадрат расстояния, чтобы избежать вычисления квадратного корня для производительности
 }
 
-document.addEventListener("mousemove", e => {
+document.addEventListener("mousemove", e => {  // Обработчик события движения мыши, вычисляет угол и расстояние от центра окна, чтобы обновить CSS переменные для динамической подсветки, используем quickDist для производительности
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
     const distanceX = e.clientX - centerX
@@ -170,11 +174,11 @@ document.addEventListener("mousemove", e => {
 });
 
 // ===== Запуск =====
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {  // Ждем загрузки DOM, чтобы инициализировать часы и начать обновление каждую секунду, запускаем showTime сразу, чтобы не ждать первую секунду
     showTime();
     setInterval(showTime, 1000);
 });
 
-document.addEventListener("click", () => {
+document.addEventListener("click", () => {  // Воспроизводим звук "тик" при первом клике, чтобы избежать проблем с автозапуском звука в браузерах, воспроизводим только один раз
     tickSound.play().catch(() => {});
 }, { once: true });
