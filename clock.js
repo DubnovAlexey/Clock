@@ -148,7 +148,8 @@ tickSound.volume = 0.3;
 
 function playTick() { /* Функция для воспроизведения звука "тик", клонируем аудио элемент, чтобы можно было воспроизводить звук несколько раз подряд */
     const sound = tickSound.cloneNode();
-    sound.play().catch(() => {});
+    sound.play().catch(() => {
+    });
 }
 
 // ===== Логика подсветки =====
@@ -157,12 +158,12 @@ function quickDist(deltaX, deltaY) { /* Быстрое вычисление кв
 }
 
 document.addEventListener("mousemove", e => { /* Обработчик события движения мыши, вычисляет угол и расстояние от центра окна, чтобы обновить CSS переменные для динамической подсветки, используем quickDist для производительности */
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    const distanceX = e.clientX - centerX
-    const distanceY = e.clientY - centerY
-    const maxDist = Math.sqrt(quickDist(centerX, centerY)); // <-- Вторая ошибка: Исправлено, теперь вычисляем корень, чтобы получить правильное расстояние
-    const dist = Math.sqrt(quickDist(distanceX, distanceY)); // <-- Также исправлено здесь, чтобы получить правильное расстояние
+    const centerX = window.innerWidth / 2; // Центр окна по X
+    const centerY = window.innerHeight / 2;  // Центр окна по Y
+    const distanceX = e.clientX - centerX  // Расстояние от центра по X
+    const distanceY = e.clientY - centerY  // Расстояние от центра по Y
+    const maxDist = Math.sqrt(quickDist(centerX, centerY)); // Максимальное расстояние от центра до угла окна
+    const dist = Math.sqrt(quickDist(distanceX, distanceY)); // Текущее расстояние от центра до курсора
     const deg = Math.atan2(distanceY, distanceX) / Math.PI * 180;
 
     document.body.style.setProperty("--deg", `${deg}deg`);
@@ -176,5 +177,6 @@ document.addEventListener("DOMContentLoaded", () => { /* Ждем загрузк
 });
 
 document.addEventListener("click", () => { /* Воспроизводим звук "тик" при первом клике, чтобы избежать проблем с автозапуском звука в браузерах, воспроизводим только один раз */
-    tickSound.play().catch(() => {});
-}, { once: true });
+    tickSound.play().catch(() => {
+    });
+}, {once: true});
