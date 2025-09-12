@@ -116,7 +116,7 @@ function showTime() { /* Функция для отображения текущ
     const s = String(date.getSeconds()).padStart(2, "0");
 
     // Проверяем, если это последние 10 секунд (от 50 до 59)
-    const isLastTenSeconds = s >= 50;
+    const isLastTenSeconds = s >= 50; // Булево значение, true если секунды от 50 до 59, иначе false
 
     // Применяем класс для анимации и цвета
     const secondsClass = isLastTenSeconds ? "seconds pulse-animation" : "seconds"; /* Класс для секунд, добавляем анимацию в последние 10 секунд */
@@ -126,7 +126,7 @@ function showTime() { /* Функция для отображения текущ
 
     // Вставляем время в DOM
     const root = document.getElementById("clock"); /* Корневой элемент для часов, создаем его, если не существует, чтобы избежать ошибок */
-    let h1 = root.querySelector("h1");
+    let h1 = root.querySelector("h1"); // Ищем существующий элемент h1 внутри корневого элемента, если его нет, создаем новый
     if (!h1) {
         h1 = document.createElement("h1");
         root.appendChild(h1);
