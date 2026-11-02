@@ -9,10 +9,11 @@
 - שעות, דקות ושניות, עדכון בכל שנייה.
 - מסגרת הגרדיאנט והצל פונים אל הסמן: הסקריפט הופך את מיקום העכבר לזווית ולמרחק מהמרכז ומעביר אותם ל-CSS כמשתנים (`--deg`, `--distance`).
 - בעשר השניות האחרונות של כל דקה השניות פועמות ונשמע צפצוף קצר. הצליל מתחיל אחרי הלחיצה הראשונה, כפי שהדפדפנים דורשים.
+- מתאים למסך טלפון: גודל הספרות והריווחים גמישים (`clamp`), והתאורה עוקבת גם אחרי האצבע.
 
 ## טכנולוגיות
 
-HTML5 · CSS3 (custom properties, `conic-gradient`, `cos()` / `sin()`, pseudo-elements) · JavaScript (`setInterval`, `Audio`, mouse events)
+HTML5 · CSS3 (custom properties, `conic-gradient`, `cos()` / `sin()`, `clamp()`, pseudo-elements) · JavaScript (`setInterval`, `Audio`, Pointer Events)
 
 ## מה תרגלתי
 
@@ -26,8 +27,7 @@ HTML5 · CSS3 (custom properties, `conic-gradient`, `cos()` / `sin()`, pseudo-el
 
 ## תוכניות
 
-- לפרסם ב-GitHub Pages (Settings → Pages → ענף `main`).
-- להתאים את הכרטיס למסכי טלפון צרים.
+- לפרסם ב-GitHub Pages (Settings → Pages → Deploy from a branch → ענף `main`, תיקייה `/ (root)`).
 - מתג לערכת נושא כהה: הצבעים כבר מגיעים ממשתנה אחד, `--accent`.
 
 ## קרדיטים
