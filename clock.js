@@ -13,7 +13,8 @@ const styles = `
 }
 
 body { /* Стили для body, чтобы центрировать содержимое и задать фон */
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh; /* на телефоне учитывает панель адреса браузера */
     margin: 0;
     display: flex;
     justify-content: center;
@@ -30,7 +31,7 @@ body { /* Стили для body, чтобы центрировать содер
     background-clip: padding-box;
     border: .2rem solid transparent;
     border-radius: var(--border-radius);
-    padding: 3rem 4rem;
+    padding: clamp(1.5rem, 6vw, 3rem) clamp(1.25rem, 7vw, 4rem); /* на узком экране отступы меньше */
     margin: 1rem;
     position: relative;
 }
@@ -66,11 +67,12 @@ body { /* Стили для body, чтобы центрировать содер
 }
 
 #clock h1 { /* Стили для заголовка с часами, включая размер шрифта, цвет, тень и семейство шрифтов, а также межстрочный интервал и балансировку текста */
-    font-size: 7rem;
+    font-size: clamp(2.5rem, 13vw, 7rem); /* 7rem на компьютере, меньше на телефоне — без горизонтальной прокрутки */
     color: #091c7e;
     text-shadow: 0 0 10px #34d3e0;
     font-family: monospace, sans-serif;
-    line-height: 1.8rem;
+    line-height: .26em; /* та же пропорция, что прежние 1.8rem при 7rem */
+    white-space: nowrap;
     text-wrap: balance;
 }
 
@@ -157,7 +159,7 @@ function quickDist(deltaX, deltaY) { /* Быстрое вычисление кв
     return deltaX ** 2 + deltaY ** 2; /* Возвращаем квадрат расстояния, чтобы избежать вычисления квадратного корня для производительности */
 }
 
-document.addEventListener("mousemove", e => { /* Обработчик события движения мыши, вычисляет угол и расстояние от центра окна, чтобы обновить CSS переменные для динамической подсветки, используем quickDist для производительности */
+document.addEventListener("pointermove", e => { /* Обработчик движения мыши или пальца (pointermove работает и на сенсорных экранах), вычисляет угол и расстояние от центра окна, чтобы обновить CSS переменные для динамической подсветки, используем quickDist для производительности */
     const centerX = window.innerWidth / 2; // Центр окна по X
     const centerY = window.innerHeight / 2;  // Центр окна по Y
     const distanceX = e.clientX - centerX  // Расстояние от центра по X

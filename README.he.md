@@ -22,11 +22,11 @@ HTML5 · CSS3 (custom properties, `conic-gradient`, `cos()` / `sin()`, pseudo-el
 
 ## הרצה מקומית
 
-פתחו את `clock.html` בדפדפן.
+פתחו את `index.html` בדפדפן.
 
 ## תוכניות
 
-- לשנות את שם `clock.html` ל-`index.html` ולפרסם ב-GitHub Pages.
+- לפרסם ב-GitHub Pages (Settings → Pages → ענף `main`).
 - להתאים את הכרטיס למסכי טלפון צרים.
 - מתג לערכת נושא כהה: הצבעים כבר מגיעים ממשתנה אחד, `--accent`.
 

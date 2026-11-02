@@ -22,11 +22,11 @@ HTML5 · CSS3 (custom properties, `conic-gradient`, `cos()` / `sin()` in CSS, ps
 
 ## Run locally
 
-Open `clock.html` in a browser.
+Open `index.html` in a browser.
 
 ## Roadmap
 
-- Rename `clock.html` to `index.html` and publish on GitHub Pages.
+- Publish on GitHub Pages (Settings → Pages → branch `main`).
 - Fit the card on narrow phone screens.
 - A dark theme switch: the colours already come from one `--accent` variable.
 
