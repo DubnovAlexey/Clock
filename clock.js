@@ -104,6 +104,28 @@ body { /* Стили для body, чтобы центрировать содер
     background: var(--accent);
     color: white;
 }
+
+.clock-source { /* Ссылка на исходный код: внизу по центру, в акцентном цвете рамки часов; карточка остаётся в центре */
+    position: fixed;
+    left: 50%;
+    bottom: 1.2rem;
+    transform: translateX(-50%);
+    padding: .4rem .9rem;
+    border-radius: .4rem;
+    background: #f1f1f1;
+    color: #091c7e;
+    font: 600 .9rem/1.3 monospace, sans-serif;
+    text-decoration: none;
+    box-shadow: 0 0 0 .15rem var(--accent);
+    white-space: nowrap;
+}
+
+.clock-source:hover,
+.clock-source:focus-visible {
+    background: var(--accent);
+    color: white;
+    outline: none;
+}
 `;
 
 const styleTag = document.createElement("style"); /* Создаем тег <style> и добавляем в него CSS стили */
