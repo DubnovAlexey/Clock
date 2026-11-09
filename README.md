@@ -45,7 +45,7 @@ The beep sound is loaded from the Google Actions sound library (`actions.google.
 
 These are proposals, not currently implemented features.
 
-- Visual: add a restrained theme switch, reduced-motion styling and a readable clock favicon.
+- Visual: add a restrained theme switch and reduced-motion styling.
 - Engineering: keep deterministic checks for minute/day boundaries and test recovery after the tab has been hidden.
 - Functionality: offer a timezone/12–24-hour choice and an explicit sound toggle.
 
@@ -94,7 +94,7 @@ HTML5 · CSS3 (переменные, `conic-gradient`, `cos()` / `sin()` в CSS,
 
 Это предложения, а не уже реализованные возможности.
 
-- Визуал: добавить сдержанную смену темы, reduced motion и читаемый favicon часов.
+- Визуал: добавить сдержанную смену темы и reduced motion.
 - Инженерия: закрепить детерминированные проверки границ минуты/суток и возврата из скрытой вкладки.
 - Функции: предложить часовой пояс, формат 12/24 часа и явный переключатель звука.
 
@@ -145,7 +145,7 @@ HTML5 · CSS3 (custom properties, `conic-gradient`, `cos()` / `sin()`, `clamp()`
 
 אלה הצעות, לא יכולות שכבר מומשו.
 
-- חזות: בחירת ערכת צבעים מאופקת, תמיכה בהפחתת תנועה וסמל שעון קריא.
+- חזות: בחירת ערכת צבעים מאופקת ותמיכה בהפחתת תנועה.
 - הנדסה: בדיקות דטרמיניסטיות למעברי דקה ויום ולחזרה מלשונית מוסתרת.
 - יכולות: בחירת אזור זמן, תצוגת 12/24 שעות ומתג צליל מפורש.
 
