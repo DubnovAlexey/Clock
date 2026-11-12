@@ -1,6 +1,6 @@
 # Clock
 
-[English](#english) · [Русский](#russian) · [עברית](#hebrew)
+[English](#english) · [Русский](#russian) · [עברית](#hebrew) · [Español](#spanish) · [Français](#french)
 
 <a name="english"></a>
 
@@ -150,3 +150,101 @@ HTML5 · CSS3 (custom properties, `conic-gradient`, `cos()` / `sin()`, `clamp()`
 - יכולות: בחירת אזור זמן, תצוגת 12/24 שעות ומתג צליל מפורש.
 
 </div>
+
+---
+
+<a name="spanish"></a>
+
+## Español
+
+Un reloj digital en una tarjeta cuyo marco luminoso sigue al ratón. Todo el estilo es CSS que el propio script inserta, así que la página es un único archivo HTML y un único archivo JavaScript.
+
+### Recorrido rápido
+
+Mueva el puntero alrededor de la tarjeta y observe la luz. Fíjese en el cambio de minuto: tras un clic, en los últimos diez segundos puede sonar la breve señal existente.
+
+Empiece por `clock.js`: `showTime()` lee la fecha actual, y las coordenadas del puntero controlan variables CSS. Es un reloj local del navegador, no un servicio de sincronización horaria.
+
+Los enlaces de idioma de arriba cambian la documentación; no traducen la interfaz de la demo.
+
+### Funciones
+
+- Horas, minutos y segundos, actualizados cada segundo.
+- El marco degradado y la sombra se giran hacia el cursor: el script convierte la posición del ratón en un ángulo y una distancia al centro y los pasa a CSS mediante variables (`--deg`, `--distance`).
+- En los últimos diez segundos de cada minuto los segundos laten y suena una breve señal. El sonido se activa tras el primer clic, como exigen los navegadores.
+- Cabe en la pantalla de un móvil: el tamaño de las cifras y los márgenes son fluidos (`clamp`), y la luz también sigue al dedo.
+
+### Tecnologías
+
+HTML5 · CSS3 (variables, `conic-gradient`, `cos()` / `sin()` en CSS, `clamp()`, pseudoelementos) · JavaScript (`setInterval`, `Audio`, Pointer Events)
+
+### Lo que practiqué
+
+- Controlar CSS desde JavaScript con variables en lugar de cambiar estilos uno a uno.
+- Trigonometría para un efecto de luz que sigue al ratón.
+- Las reglas de los navegadores sobre la reproducción automática de sonido.
+
+### Cómo ejecutarlo
+
+Abra `index.html` en el navegador.
+
+### Autores y fuentes
+
+La señal sonora se carga de la biblioteca de sonidos de Google Actions (`actions.google.com/sounds`).
+
+### Plan de desarrollo
+
+Son propuestas, no funciones ya implementadas.
+
+- Visual: añadir un cambio de tema discreto y soporte de reduced motion.
+- Ingeniería: fijar comprobaciones deterministas del cambio de minuto y de día y de la vuelta desde una pestaña oculta.
+- Funciones: ofrecer zona horaria, formato de 12/24 horas y un interruptor de sonido visible.
+
+---
+
+<a name="french"></a>
+
+## Français
+
+Une horloge numérique dans une carte dont le cadre lumineux suit la souris. Tout le style est du CSS que le script insère lui-même : la page tient donc en un seul fichier HTML et un seul fichier JavaScript.
+
+### Visite rapide
+
+Déplacez le pointeur autour de la carte et suivez la lueur. Regardez le changement de minute : après un clic, la courte alerte existante peut retentir pendant les dix dernières secondes.
+
+Commencez par `clock.js` : `showTime()` lit la date actuelle, et les coordonnées du pointeur pilotent des variables CSS. C'est une horloge locale du navigateur, pas un service de synchronisation de l'heure.
+
+Les liens de langue ci-dessus changent la documentation ; ils ne traduisent pas l'interface de la démo.
+
+### Fonctions
+
+- Heures, minutes et secondes, mises à jour chaque seconde.
+- Le cadre en dégradé et l'ombre se tournent vers le curseur : le script transforme la position de la souris en angle et en distance au centre et les transmet au CSS par des variables (`--deg`, `--distance`).
+- Pendant les dix dernières secondes de chaque minute, les secondes palpitent et une courte alerte retentit. Le son s'active après le premier clic, comme l'exigent les navigateurs.
+- Tient sur un écran de téléphone : la taille des chiffres et les marges sont fluides (`clamp`), et la lueur suit aussi le doigt.
+
+### Technologies
+
+HTML5 · CSS3 (variables, `conic-gradient`, `cos()` / `sin()` en CSS, `clamp()`, pseudo-éléments) · JavaScript (`setInterval`, `Audio`, Pointer Events)
+
+### Ce que j'ai travaillé
+
+- Piloter le CSS depuis JavaScript avec des variables au lieu de modifier les styles un par un.
+- La trigonométrie pour un effet de lumière qui suit la souris.
+- Les règles des navigateurs sur la lecture automatique du son.
+
+### Lancer le projet
+
+Ouvrez `index.html` dans le navigateur.
+
+### Auteurs et sources
+
+L'alerte sonore provient de la bibliothèque de sons Google Actions (`actions.google.com/sounds`).
+
+### Pistes d'évolution
+
+Ce sont des propositions, pas des fonctions déjà réalisées.
+
+- Visuel : ajouter un changement de thème discret et la prise en charge de reduced motion.
+- Ingénierie : fixer des vérifications déterministes du passage de minute et de jour et du retour depuis un onglet masqué.
+- Fonctions : proposer le fuseau horaire, le format 12/24 heures et un interrupteur de son visible.
